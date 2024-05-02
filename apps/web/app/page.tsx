@@ -1,8 +1,12 @@
+'use client';
+
 import Image from "next/image";
 import { Card } from "@repo/ui/card";
 import { Code } from "@repo/ui/code";
 import styles from "./page.module.css";
 import { Button } from "@repo/ui/button";
+import { useAccount } from 'wagmi';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 function Gradient({
   conic,
@@ -52,6 +56,9 @@ const LINKS = [
 ];
 
 export default function Page(): JSX.Element {
+  const { address } = useAccount();
+  console.log("this works", {address});
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -60,21 +67,7 @@ export default function Page(): JSX.Element {
           <Code className={styles.code}>web</Code>
         </p>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            By{" "}
-            <Image
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              height={24}
-              priority
-              src="/vercel.svg"
-              width={100}
-            />
-          </a>
+          <ConnectButton />
         </div>
       </div>
 
