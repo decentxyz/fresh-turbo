@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { useAccount } from "wagmi";
+import { ReactNode } from 'react';
+import { useAccount } from 'wagmi';
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,12 +11,12 @@ interface ButtonProps {
 
 export const Button = ({ children, className, appName }: ButtonProps) => {
   const { address } = useAccount();
-  console.log("this does not work", {address});
+  console.log('this does not work', { address });
 
   return (
     <button
       className={className}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
+      onClick={() => alert(`your address ${address}`)}
     >
       {children}
     </button>
